@@ -30,7 +30,7 @@ async function submitActive(e){
   query = e.target.elements.searchField.value.trim();
   
     if (!query) {
-      showError('Error query');
+      showError('Error');
         return;
     }
 
@@ -101,7 +101,7 @@ function updateBtnStatus() {
 function showError(message) {
   iziToast.error({
     title: 'Error',
-    message:  message,
+    message,
   });
 }
 
