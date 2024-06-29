@@ -27,8 +27,14 @@
 .form-search {
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 36px;
   gap: 8px;
+}
+
+.section-for-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 input {
@@ -108,10 +114,9 @@ input::placeholder {
 .loader {
   margin: 0 auto;
   margin-top: 40px;
-  width: 48px;
-  height: 48px;
   display: block;
   position: relative;
+
 }
 
 .visually-hidden {
@@ -125,4 +130,22 @@ input::placeholder {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.js-btn-load {
+  border-radius: 8px;
+    padding: 8px 16px;
+    width: 125px;
+    height: 40px;
+    background: #4e75ff;
+    border: none;
+  font: 500 16px / 1.5 "Montserrat", sans-serif;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
 }

@@ -36,38 +36,42 @@ async function submitActive(e){
     }
 
   currentPage = 1;
-    showLoader();
+    showLoader(loader);
     hideLoadBtn();
 
     try {
       const data = await fetchPhotos(query, currentPage);
-      maxPage = Math.ceil(data.totalResults / perPage);
+      maxPage = Math.ceil(data.totalHits / perPage);
 
             if (maxPage === 0) {
               showError('Empty Result');
-              hideLoader();
+              hideLoader(loader);
               updateBtnStatus();
               return;
             } 
-            const markup = gallerryTemplate(data.imageData);
-            gallery.innerHTML = markup;
+      const markup = gallerryTemplate(data.hits);
+      gallery.innerHTML = markup;
+      lightbox.refresh();
     
     } catch (err) {
       showError(err);
     }
+  
 
-  hideLoader();
+  hideLoader(loader);
   updateBtnStatus();
 }
+
+
 
 btnLoadMore.addEventListener('click', async () => { 
   currentPage++; 
   hideLoadBtn();
-  showLoader();
+  showLoader(loader);
 
   try {
     const data = await fetchPhotos(query, currentPage);
-    const markup = gallerryTemplate(data.imageData);
+    const markup = gallerryTemplate(data.hits);
     gallery.insertAdjacentHTML('beforeend', markup);
     skipOldElement();
   } catch {
@@ -75,37 +79,25 @@ btnLoadMore.addEventListener('click', async () => {
     showError(error.message);
   }
   
-  hideLoader();
+  hideLoader(loader);
   updateBtnStatus();
 
 });
 
 function updateBtnStatus() {
    if (currentPage >= maxPage) {
-    hideLoadBtn();
+     hideLoadBtn();
 
     if (maxPage) {
       iziToast.info({
         title: 'The End!',
-        message: 'End of collection!',
+        message: "We're sorry, but you've reached the end of search results.",
       });
     }
   } else {
     showLoadBtn();
   }
 }
-
-// function popupMessage(message, color) {
-//   iziToast.show({
-//     message: message,
-//     position: 'topRight',
-//     backgroundColor: color,
-//     iconUrl: closeIcon,
-//     messageColor: '#fff',
-//     theme: 'dark',
-//     maxWidth: '350px',
-//   });
-// }
 
 function showError(message) {
   iziToast.error({
@@ -121,12 +113,12 @@ function hideLoadBtn() {
   btnLoadMore.classList.add('visually-hidden');
 }
 
-function showLoader() {
-  loadElem.classList.remove('visually-hidden');
+function showLoader(element) {
+  element.classList.remove('visually-hidden');
 }
 
-function hideLoader() {
-  loadElem.classList.add('visually-hidden');
+function hideLoader(element) {
+  element.classList.add('visually-hidden');
 }
 
 function skipOldElement() {
