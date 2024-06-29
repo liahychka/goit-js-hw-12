@@ -17,7 +17,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
 const btnLoadMore = document.querySelector('.js-btn-load');
 const loadElem = document.querySelector('.js-loader');
 
-
 let query = '';
 let currentPage = 1;
 let maxPage = 0;
