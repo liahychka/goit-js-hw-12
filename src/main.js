@@ -115,18 +115,18 @@ function showError(message) {
 }
 
 function showLoadBtn() {
-  btnLoadMore.classList.remove('hidden');
+  btnLoadMore.classList.remove('visually-hidden');
 }
 function hideLoadBtn() {
-  btnLoadMore.classList.add('hidden');
+  btnLoadMore.classList.add('visually-hidden');
 }
 
 function showLoader() {
-  loadElem.classList.remove('hidden');
+  loadElem.classList.remove('visually-hidden');
 }
 
 function hideLoader() {
-  loadElem.classList.add('hidden');
+  loadElem.classList.add('visually-hidden');
 }
 
 function skipOldElement() {
