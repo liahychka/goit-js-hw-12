@@ -120,6 +120,13 @@ input::placeholder {
 
 }
 
+.js-loader {
+  margin: 0 auto;
+  margin-top: 40px;
+  display: block;
+  position: relative;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -147,6 +154,9 @@ input::placeholder {
 
 div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 32px;
+    align-items: center;
+    gap: 25px;
 }

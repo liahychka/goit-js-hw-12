@@ -2,7 +2,6 @@ import { fetchPhotos } from './js/pixabay-api';
 import { gallerryTemplate } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import closeIcon from './img/close.svg';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -62,11 +61,10 @@ async function submitActive(e){
 }
 
 
-
 btnLoadMore.addEventListener('click', async () => { 
   currentPage++; 
   hideLoadBtn();
-  showLoader(loader);
+  showLoader(loadElem);
 
   try {
     const data = await fetchPhotos(query, currentPage);
@@ -78,7 +76,7 @@ btnLoadMore.addEventListener('click', async () => {
     showError(error.message);
   }
   
-  hideLoader(loader);
+  hideLoader(loadElem);
   updateBtnStatus();
 
 });
